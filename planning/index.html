@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>PWA | Home</title>
+    <meta name="description" content="A Progressive Web App" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+      Give name for pinning site to Taskbar on WIndows.
+    -->
+    <meta name="application-name" content="PWA" />
+    <!--
+      Give site tooltip for pinning
+    -->
+    <meta name="msapplication-tooltip" content="PWA" />
+    <!-- Make it possible to pin app on mobile -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <!-- Get Site to look like app on iOS  -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+    <!--
+      Add Title for when site is pinned to iOS screen
+    -->
+    <meta name="apple-mobile-web-app-title" content="PWA" />
+    <meta name="theme-color" content="#000000" />
+
+    <!--
+      Add icon for when pinned to iOS & any other mobile
+     -->
+    <link rel="icon" sizes="192x192" href="images/logo192.png" />
+    <link rel="apple-touch-icon" href="images/logo512.png" />
+    <!--
+      Display certain image when site is loaded as app on iOS
+     -->
+    <link
+      rel="apple-touch-startup-image"
+      media="(max-width: 480px) and (-webkit-min-device-pixel-ratio: 2)"
+      href="images/logo512.png"
+    />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <!--
+      DNS Prefetching: prefetches the site that is included in the href
+    -->
+    <link rel="dns-prefetch" href="https://ka-f.fontawesome.com" />
+  </head>
+
+  <body style="background: #ffffff">
+    <!-- [if IE]>
+    <p class="browserupgrade">
+      You are using an <strong>outdated</strong> browser. Please
+      <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+      your experience and security.
+    </p>
+    <![endif] -->
+
+    <!-- Document Main Content -->
+    <main id="root">
+      <!-- Document Header -->
+      <header>
+        <nav></nav>
+      </header>
+
+      <section id="home">
+        <h1 class="d-none">Home Section</h1>
+        <article>
+          <h2 class="d-none">Home Article</h2>
+          <p>Hello world</p>
+        </article>
+      </section>
+
+      <!-- Document Footer -->
+      <footer>
+        <nav></nav>
+      </footer>
+    </main>
+
+    <!-- ! Load JavaScript files -->
+    <script src="js/vendor/bootstrap.bundle.min.js" defer></script>
+    <script src="js/vendor/fontawesome.min.js" defer></script>
+    <script src="js/vendor/plugins.min.js" defer></script>
+    <script src="js/utils.min.js" defer></script>
+    <script src="js/toast.min.js" defer></script>
+    <script src="js/store.min.js" defer></script>
+    <script src="js/main.min.js" defer></script>
+
+    <!--
+      !Service Worker
+     -->
+    <script>
+      // ServiceWorker is a progressive technology. Ignore unsupported browsers
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () =>
+          navigator.serviceWorker.register('sw.js')
+        );
+      }
+    </script>
+
+    <!--
+      ! Load CSS files
+     -->
+    <noscript id="deferred-styles">
+      <link rel="stylesheet" href="css/vendor/animate.min.css" />
+      <link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
+      <link rel="stylesheet" href="css/app.min.css" />
+      <link rel="stylesheet" href="css/main.min.css" />
+    </noscript>
+    <script>
+      var loadDeferredStyles = function () {
+        var addStylesNode = document.getElementById('deferred-styles');
+        var replacement = document.createElement('div');
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement);
+        addStylesNode.parentElement.removeChild(addStylesNode);
+      };
+      var raf =
+        window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame;
+      if (raf)
+        raf(function () {
+          window.setTimeout(loadDeferredStyles, 0);
+        });
+      else window.addEventListener('load', loadDeferredStyles);
+    </script>
+  </body>
+</html>

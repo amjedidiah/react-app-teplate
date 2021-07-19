@@ -1,0 +1,5 @@
+{
+  "cors": true,
+  "port": 5500,
+  "entryFile": "index.html"
+}
